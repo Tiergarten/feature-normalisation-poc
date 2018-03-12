@@ -17,9 +17,9 @@ from pyspark.ml.linalg import Vectors
 
 
 def get_feature_json():
-    fd = open('sample-feature-output.json')
-    ret = json.loads(fd.read())
-    fd.close()
+    with open('sample-feature-output.json') as fd:
+        ret = json.loads(fd.read())
+
     return ret
 
 
@@ -88,7 +88,3 @@ if __name__ == '__main__':
 
     for pp in ['normalise', 'minmax']:
         pre_process(pp, feature_list)
-
-
-
-
